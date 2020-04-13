@@ -4,8 +4,7 @@ import ipmininet
 from ipmininet.cli import IPCLI
 from ipmininet.ipnet import IPNet
 from ipmininet.iptopo import IPTopo
-from ipmininet.router.config.base import RouterConfig
-from ipmininet.router.config.zebra import StaticRoute, Zebra
+from ipmininet.router.config import RouterConfig, StaticRoute, Zebra
 
 """
 

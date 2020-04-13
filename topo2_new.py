@@ -4,8 +4,9 @@ import ipmininet
 from ipmininet.cli import IPCLI
 from ipmininet.ipnet import IPNet
 from ipmininet.iptopo import IPTopo
-from ipmininet.router.config.base import RouterConfig
-from ipmininet.router.config.zebra import StaticRoute, Zebra
+
+from ipmininet.router.config import RouterConfig, StaticRoute, Zebra
+
 
 """
                          ids
@@ -287,9 +288,9 @@ if __name__ == '__main__':
 
         # Enable SRv6 On Routers.
         r1 = RouterConfiguration(net.get('r1'),1,r1_routes)
-        r2 = RouterConfiguration(net.get('r2'),2,r2_routes)
+        r2 = RouterConfiguration(net.get('r2'),2,r2_routes,False)
         r3 = RouterConfiguration(net.get('r3'),3,r3_routes)
-        r4 = RouterConfiguration(net.get('r4'),4,r4_routes,False)
+        r4 = RouterConfiguration(net.get('r4'),4,r4_routes)
         ids = RouterConfiguration(net.get('ids'),5,ids_routes)
 
         HostConfiguration(net.get('a'),'a',1)

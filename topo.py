@@ -4,8 +4,7 @@ import ipmininet
 from ipmininet.cli import IPCLI
 from ipmininet.ipnet import IPNet
 from ipmininet.iptopo import IPTopo
-from ipmininet.router.config.base import RouterConfig
-from ipmininet.router.config.zebra import StaticRoute, Zebra
+from ipmininet.router.config import RouterConfig, StaticRoute, Zebra
 
 """
 
@@ -16,6 +15,8 @@ from ipmininet.router.config.zebra import StaticRoute, Zebra
                    b
 
 """
+
+#ip -6 route add fc00:3::bb via 2001:12::2 dev r1-eth0
 
 # R1 R3 R4 are Segment Routing Enabled Server.
 
@@ -259,6 +260,7 @@ if __name__ == '__main__':
 
         # Enable SRv6 On Routers.
         r1 = RouterConfiguration(net.get('r1'),1)
+        r1.exec_cmd('ip -6 route add fc00:3::1 via 2001:12::2 dev r1-eth0')
         r3 = RouterConfiguration(net.get('r3'),3)
         r4 = RouterConfiguration(net.get('r4'),4)
         HostConfiguration(net.get('a'),'a',1)
